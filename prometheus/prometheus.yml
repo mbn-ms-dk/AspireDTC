@@ -1,0 +1,10 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: 'trafficsimulationservice'
+    static_configs:
+      - targets: ['host.docker.internal:5351']
+  - job_name: 'visualsimulation'
+    static_configs:
+      - targets: ['host.docker.internal:5042']
