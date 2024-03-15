@@ -2,13 +2,52 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34607.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireDTC.AppHost", "AspireDTC.AppHost\AspireDTC.AppHost.csproj", "{FFB1154C-CF22-4711-8AEF-E2E41709FAEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireDTC.AppHost", "AspireDTC.AppHost\AspireDTC.AppHost.csproj", "{FFB1154C-CF22-4711-8AEF-E2E41709FAEC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireDTC.ServiceDefaults", "AspireDTC.ServiceDefaults\AspireDTC.ServiceDefaults.csproj", "{551A6C23-D615-4B13-96C3-CFEC2560528D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireDTC.ApiService", "AspireDTC.ApiService\AspireDTC.ApiService.csproj", "{A903A6AB-475B-4A2E-8894-5675CC8DF4D4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{460A6FB4-DB86-400A-ABE8-315222DCA696}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireDTC.Web", "AspireDTC.Web\AspireDTC.Web.csproj", "{08CA8AF2-9CF2-409E-BDDD-AC6961AC4B23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireDtC.TrafficSimulationWorker", "AspireDtC.TrafficSimulationWorker\AspireDtC.TrafficSimulationWorker.csproj", "{6C49281A-417E-45B4-8961-3BD577CF744D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "prometheus", "prometheus", "{CEEDE2AC-B3C3-44BF-AECE-BEB9B7F4C4EE}"
+	ProjectSection(SolutionItems) = preProject
+		prometheus\prometheus.yml = prometheus\prometheus.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "grafana", "grafana", "{143881BE-70E2-4848-9738-A744E684405A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{ACA7FE80-7153-4B38-971F-52B22AAF9E09}"
+	ProjectSection(SolutionItems) = preProject
+		grafana\config\grafana.ini = grafana\config\grafana.ini
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "provisioning", "provisioning", "{68145028-52B1-41F5-8E76-ABA8B9723120}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "datasources", "datasources", "{0271D295-DFB8-4DE1-AC6B-0FDCF614E7B3}"
+	ProjectSection(SolutionItems) = preProject
+		grafana\config\provisioning\datasources\default.yml = grafana\config\provisioning\datasources\default.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dashboards", "dashboards", "{AD863EFD-3BC5-4178-9615-B251EEE3CC03}"
+	ProjectSection(SolutionItems) = preProject
+		grafana\config\provisioning\dashboards\default.yml = grafana\config\provisioning\dashboards\default.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dashboards", "dashboards", "{1C75F238-83CF-4858-86D8-4342178B00D5}"
+	ProjectSection(SolutionItems) = preProject
+		grafana\dashboards\aspnetcore-endpoint.json = grafana\dashboards\aspnetcore-endpoint.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mosquitto", "mosquitto", "{965A4080-4C6E-4A80-BCEA-B3A535CA5196}"
+	ProjectSection(SolutionItems) = preProject
+		mosquitto\mosquitto.conf = mosquitto\mosquitto.conf
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireDTC.VisualSimulation", "AspireDTC.VisualSimulation\AspireDTC.VisualSimulation.csproj", "{ADE77F6A-D541-46FC-B7B9-D2C0C2433D07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,17 +63,27 @@ Global
 		{551A6C23-D615-4B13-96C3-CFEC2560528D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{551A6C23-D615-4B13-96C3-CFEC2560528D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{551A6C23-D615-4B13-96C3-CFEC2560528D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A903A6AB-475B-4A2E-8894-5675CC8DF4D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A903A6AB-475B-4A2E-8894-5675CC8DF4D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A903A6AB-475B-4A2E-8894-5675CC8DF4D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A903A6AB-475B-4A2E-8894-5675CC8DF4D4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08CA8AF2-9CF2-409E-BDDD-AC6961AC4B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08CA8AF2-9CF2-409E-BDDD-AC6961AC4B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08CA8AF2-9CF2-409E-BDDD-AC6961AC4B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08CA8AF2-9CF2-409E-BDDD-AC6961AC4B23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C49281A-417E-45B4-8961-3BD577CF744D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C49281A-417E-45B4-8961-3BD577CF744D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C49281A-417E-45B4-8961-3BD577CF744D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C49281A-417E-45B4-8961-3BD577CF744D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADE77F6A-D541-46FC-B7B9-D2C0C2433D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADE77F6A-D541-46FC-B7B9-D2C0C2433D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADE77F6A-D541-46FC-B7B9-D2C0C2433D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADE77F6A-D541-46FC-B7B9-D2C0C2433D07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CEEDE2AC-B3C3-44BF-AECE-BEB9B7F4C4EE} = {460A6FB4-DB86-400A-ABE8-315222DCA696}
+		{143881BE-70E2-4848-9738-A744E684405A} = {460A6FB4-DB86-400A-ABE8-315222DCA696}
+		{ACA7FE80-7153-4B38-971F-52B22AAF9E09} = {143881BE-70E2-4848-9738-A744E684405A}
+		{68145028-52B1-41F5-8E76-ABA8B9723120} = {ACA7FE80-7153-4B38-971F-52B22AAF9E09}
+		{0271D295-DFB8-4DE1-AC6B-0FDCF614E7B3} = {68145028-52B1-41F5-8E76-ABA8B9723120}
+		{AD863EFD-3BC5-4178-9615-B251EEE3CC03} = {68145028-52B1-41F5-8E76-ABA8B9723120}
+		{1C75F238-83CF-4858-86D8-4342178B00D5} = {143881BE-70E2-4848-9738-A744E684405A}
+		{965A4080-4C6E-4A80-BCEA-B3A535CA5196} = {460A6FB4-DB86-400A-ABE8-315222DCA696}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4E38F856-E576-4A22-A2AC-590EE69AD199}
