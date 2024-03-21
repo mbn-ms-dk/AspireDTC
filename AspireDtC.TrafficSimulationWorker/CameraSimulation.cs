@@ -68,7 +68,6 @@ public class CameraSimulation
 
     #region Private helper methods
 
-
     private string GenerateRandomLicenseNumber()
     {
         // Define the format of Danish license plates (XX 11 222)

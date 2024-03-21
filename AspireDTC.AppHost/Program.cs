@@ -23,6 +23,7 @@ var grafana = builder.AddContainer("grafana", "grafana/grafana")
 
 //var mosquitto = mqtt.GetEndpoint("mqtt");
 
+
 //add prometheus
 var prometheus = builder.AddContainer("prometheus", "prom/prometheus").WithBindMount("../prometheus", "/etc/prometheus/")
     .WithEndpoint(9090, hostPort: 9090);
@@ -56,10 +57,5 @@ builder.AddProject<Projects.AspireDtC_TrafficSimulationWorker>("trafficsimulatio
 
 builder.AddProject<Projects.AspireDTC_VisualSimulation>("visualsimulation")
      .WithReference(tcs);
-
-
-
-
-
 
 builder.Build().Run();
