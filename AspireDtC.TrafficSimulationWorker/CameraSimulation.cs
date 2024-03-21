@@ -68,52 +68,28 @@ public class CameraSimulation
 
     #region Private helper methods
 
-    private string _validLicenseNumberChars = "DFGHJKLNPRSTXYZ";
 
     private string GenerateRandomLicenseNumber()
     {
-        int type = rnd.Next(1, 9);
-        string licenseNumber = string.Empty;
-        switch (type)
-        {
-            case 1: // 99-AA-99
-                licenseNumber = string.Format("{0:00}-{1}-{2:00}", rnd.Next(1, 99), GenerateRandomCharacters(2), rnd.Next(1, 99));
-                break;
-            case 2: // AA-99-AA
-                licenseNumber = string.Format("{0}-{1:00}-{2}", GenerateRandomCharacters(2), rnd.Next(1, 99), GenerateRandomCharacters(2));
-                break;
-            case 3: // AA-AA-99
-                licenseNumber = string.Format("{0}-{1}-{2:00}", GenerateRandomCharacters(2), GenerateRandomCharacters(2), rnd.Next(1, 99));
-                break;
-            case 4: // 99-AA-AA
-                licenseNumber = string.Format("{0:00}-{1}-{2}", rnd.Next(1, 99), GenerateRandomCharacters(2), GenerateRandomCharacters(2));
-                break;
-            case 5: // 99-AAA-9
-                licenseNumber = string.Format("{0:00}-{1}-{2}", rnd.Next(1, 99), GenerateRandomCharacters(3), rnd.Next(1, 10));
-                break;
-            case 6: // 9-AAA-99
-                licenseNumber = string.Format("{0}-{1}-{2:00}", rnd.Next(1, 9), GenerateRandomCharacters(3), rnd.Next(1, 10));
-                break;
-            case 7: // AA-999-A
-                licenseNumber = string.Format("{0}-{1:000}-{2}", GenerateRandomCharacters(2), rnd.Next(1, 999), GenerateRandomCharacters(1));
-                break;
-            case 8: // A-999-AA
-                licenseNumber = string.Format("{0}-{1:000}-{2}", GenerateRandomCharacters(1), rnd.Next(1, 999), GenerateRandomCharacters(2));
-                break;
-        }
+        // Define the format of Danish license plates (XX 11 222)
 
-        return licenseNumber;
+        // Generate two random letters
+        var letters = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 2)
+            .Select(s => s[new Random().Next(s.Length)]).ToArray());
+
+        // Generate two random digits
+        var digits = new string(Enumerable.Repeat("0123456789", 2)
+            .Select(s => s[new Random().Next(s.Length)]).ToArray());
+
+        // Generate three more random digits
+        var moreDigits = new string(Enumerable.Repeat("0123456789", 3)
+            .Select(s => s[new Random().Next(s.Length)]).ToArray());
+
+        // Combine the parts to form the license plate
+        var licensePlate = $"{letters} {digits} {moreDigits}";
+
+        return licensePlate;
     }
 
-    private string GenerateRandomCharacters(int amount)
-    {
-        char[] chars = new char[amount];
-        for (int i = 0; i < amount; i++)
-        {
-            chars[i] = _validLicenseNumberChars[rnd.Next(_validLicenseNumberChars.Length - 1)];
-        }
-        return new string(chars);
-    }
-
-    #endregion
+        #endregion
 }
