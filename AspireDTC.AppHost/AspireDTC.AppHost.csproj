@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AspireDTC.TrafficControlService\AspireDTC.TrafficControlService.csproj" />
     <ProjectReference Include="..\AspireDtC.TrafficSimulationWorker\AspireDtC.TrafficSimulationWorker.csproj" />
     <ProjectReference Include="..\AspireDTC.VisualSimulation\AspireDTC.VisualSimulation.csproj" />
   </ItemGroup>

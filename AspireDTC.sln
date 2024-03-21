@@ -49,6 +49,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mosquitto", "mosquitto", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireDTC.VisualSimulation", "AspireDTC.VisualSimulation\AspireDTC.VisualSimulation.csproj", "{ADE77F6A-D541-46FC-B7B9-D2C0C2433D07}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireDTC.TrafficControlService", "AspireDTC.TrafficControlService\AspireDTC.TrafficControlService.csproj", "{2A115B8D-33A7-44EE-AE3D-25D6D055FFB4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{5F5968A6-FF27-40AD-A9C7-D18566E697EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +75,10 @@ Global
 		{ADE77F6A-D541-46FC-B7B9-D2C0C2433D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADE77F6A-D541-46FC-B7B9-D2C0C2433D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADE77F6A-D541-46FC-B7B9-D2C0C2433D07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A115B8D-33A7-44EE-AE3D-25D6D055FFB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A115B8D-33A7-44EE-AE3D-25D6D055FFB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A115B8D-33A7-44EE-AE3D-25D6D055FFB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A115B8D-33A7-44EE-AE3D-25D6D055FFB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +92,7 @@ Global
 		{AD863EFD-3BC5-4178-9615-B251EEE3CC03} = {68145028-52B1-41F5-8E76-ABA8B9723120}
 		{1C75F238-83CF-4858-86D8-4342178B00D5} = {143881BE-70E2-4848-9738-A744E684405A}
 		{965A4080-4C6E-4A80-BCEA-B3A535CA5196} = {460A6FB4-DB86-400A-ABE8-315222DCA696}
+		{5F5968A6-FF27-40AD-A9C7-D18566E697EB} = {460A6FB4-DB86-400A-ABE8-315222DCA696}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4E38F856-E576-4A22-A2AC-590EE69AD199}

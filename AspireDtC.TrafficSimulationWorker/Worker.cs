@@ -14,20 +14,15 @@ public class Worker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _logger.LogInformation("Using mosquitto");
-        _logger.LogInformation("Setting number of lanes");
-        int lanes = 3;
-        CameraSimulation[] cameras = new CameraSimulation[lanes];
-        for (var i = 0; i < lanes; i++)
-        {
-            var camNumber = i + 1;
-            ITrafficControlService trafficControlService = await MqttTrafficControlService.CreateAsync(camNumber);
-            cameras[i] = new CameraSimulation(camNumber, trafficControlService, _logger);
-        }
+        var trafficControlEndpoint = "http://localhost:5258";
+        _logger.LogInformation($"Using HTTP endpoint {trafficControlEndpoint}");
+        var client = new HttpClient { BaseAddress = new Uri(trafficControlEndpoint) };
+
+        var cameras = Enumerable.Range(0, 4).Select(cameraNumber => new CameraHttpSimulation(cameraNumber, client));
 
         while (!stoppingToken.IsCancellationRequested)
         {
-            Parallel.ForEach(cameras, cam => cam.start());
+            Parallel.ForEach(cameras, async camera => await camera.Start());
 
             await Task.Run(() => Thread.Sleep(Timeout.Infinite), stoppingToken).WaitAsync(stoppingToken);
 

@@ -164,52 +164,24 @@ export let TrafficScene = new Phaser.Class({
     },
 
     generateRandomLicensePlate: function() {
-        const type = Utils.getRandomInteger(1, 8);
-        let result;
-        switch (type)
-        {
-            case 1: // 99-AA-99
-                result = `${this.generateLicensePlateNumbers(99)}-${this.generateLicensePlateCharacters(2)}-${this.generateLicensePlateNumbers(99)}`;
-                break;
-            case 2: // AA-99-AA
-                result = `${this.generateLicensePlateCharacters(2)}-${this.generateLicensePlateNumbers(99)}-${this.generateLicensePlateCharacters(2)}`;
-                break;
-            case 3: // AA-AA-99
-                result = `${this.generateLicensePlateCharacters(2)}-${this.generateLicensePlateCharacters(2)}-${this.generateLicensePlateNumbers(99)}`;
-                break;
-            case 4: // 99-AA-AA
-                result = `${this.generateLicensePlateNumbers(99)}-${this.generateLicensePlateCharacters(2)}-${this.generateLicensePlateCharacters(2)}`;
-                break;
-            case 5: // 99-AAA-9
-                result = `${this.generateLicensePlateNumbers(99)}-${this.generateLicensePlateCharacters(3)}-${this.generateLicensePlateNumbers(9)}`;
-                break;
-            case 6: // 9-AAA-99
-                result = `${this.generateLicensePlateNumbers(9)}-${this.generateLicensePlateCharacters(3)}-${this.generateLicensePlateNumbers(99)}`;
-                break;
-            case 7: // AA-999-A
-                result = `${this.generateLicensePlateCharacters(2)}-${this.generateLicensePlateNumbers(999)}-${this.generateLicensePlateCharacters(1)}`;
-                break;
-            case 8: // A-999-AA
-                result = `${this.generateLicensePlateCharacters(1)}-${this.generateLicensePlateNumbers(999)}-${this.generateLicensePlateCharacters(2)}`;
-                break;
-        }
+        // Define the format of Danish license plates (XX 11 222)
 
-        return result;
-    },
+        // Generate two random letters
+        const letters = Array.from({ length: 2 }, () => {
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            return alphabet[Math.floor(Math.random() * alphabet.length)];
+        }).join('');
 
-    generateLicensePlateCharacters: function(count) {
-        const validLicenseNumberChars = "DFGHJKLNPRSTXYZ";
-        let result = '';
-        for (let i = 0; i < count; i++)
-        {
-            result += validLicenseNumberChars[Utils.getRandomInteger(0, validLicenseNumberChars.length - 1)];
-        }
-        return result;
-    },
+        // Generate two random digits
+        const digits = Array.from({ length: 2 }, () => Math.floor(Math.random() * 10)).join('');
 
-    generateLicensePlateNumbers: function(max) {
-        const length = max.toString().length;
-        return Utils.getRandomInteger(0, max).toString().padStart(length, '0');
+        // Generate three more random digits
+        const moreDigits = Array.from({ length: 3 }, () => Math.floor(Math.random() * 10)).join('');
+
+        // Combine the parts to form the license plate
+        const licensePlate = `${letters} ${digits} ${moreDigits}`;
+
+        return licensePlate;
     }
 
 });
