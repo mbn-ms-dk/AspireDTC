@@ -15,8 +15,8 @@ public  class CameraHttpSimulation
     private int _cameraNumber;
     private int _minEntryDelayInMilliseconds = 50;
     private int _maxEntryDelayInMilliseconds = 5000;
-    private int _minExitDelayInSeconds = 4;
-    private int _maxExitDelayInSeconds = 10;
+    private int _minExitDelayInSeconds = 5;
+    private int _maxExitDelayInSeconds = 50;
 
     public CameraHttpSimulation(int cameraNumber, HttpClient client)
     {
@@ -33,7 +33,6 @@ public  class CameraHttpSimulation
         {
             try
             {
-                // simulate entry
                 var entryDelay = TimeSpan.FromMilliseconds(_random.Next(_minEntryDelayInMilliseconds, _maxEntryDelayInMilliseconds) + _random.NextDouble());
                 await Task.Delay(entryDelay);
 
@@ -51,7 +50,7 @@ public  class CameraHttpSimulation
                     entry.EnsureSuccessStatusCode();
 
                     Console.WriteLine($"Simulated ENTRY of vehicle with license number {vehicleRegistered.LicenseNumber} in lane {vehicleRegistered.Lane}");
-
+                    
                     // simulate exit
                     var exitDelay = TimeSpan.FromSeconds(_random.Next(_minExitDelayInSeconds, _maxExitDelayInSeconds) + _random.NextDouble());
                     await Task.Delay(exitDelay);

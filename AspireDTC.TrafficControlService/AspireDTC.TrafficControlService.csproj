@@ -7,42 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="DaprComponents\config.yaml" />
-    <None Remove="DaprComponents\pubsub.yaml" />
-    <None Remove="DaprComponents\secretstore.yaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="DaprComponents\config.yaml">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DaprComponents\pubsub.yaml">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DaprComponents\secretstore.yaml">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Aspire.RabbitMQ.Client" Version="8.0.0-preview.4.24156.9" />
     <PackageReference Include="Aspire.StackExchange.Redis" Version="8.0.0-preview.4.24156.9" />
     <PackageReference Include="Aspire.StackExchange.Redis.DistributedCaching" Version="8.0.0-preview.4.24156.9" />
     <PackageReference Include="Aspire.StackExchange.Redis.OutputCaching" Version="8.0.0-preview.4.24156.9" />
-    <PackageReference Include="Dapr.Actors" Version="1.13.0" />
-    <PackageReference Include="Dapr.Actors.AspNetCore" Version="1.13.0" />
-    <PackageReference Include="Dapr.AspNetCore" Version="1.13.0" />
-    <PackageReference Include="Dapr.Extensions.Configuration" Version="1.13.0" />
     <PackageReference Include="StackExchange.Redis" Version="2.7.33" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AspireDTC.ServiceDefaults\AspireDTC.ServiceDefaults.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="DaprComponents\secrets.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
 </Project>

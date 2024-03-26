@@ -1,23 +1,22 @@
 using AspireDTC.TrafficControlService;
 using AspireDTC.TrafficControlService.Events;
 using AspireDTC.TrafficControlService.Models;
-using Dapr.Client;
-using Microsoft.Extensions.DependencyInjection;
+using RabbitMQ.Client;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
 // Add services to the container.
-builder.Services.AddSingleton<ISpeedingViolationCalculator>(new DefaultSpeedingViolationCalculator("A12", 10, 110, 10));
+builder.Services.AddSingleton<ISpeedingViolationCalculator>(new DefaultSpeedingViolationCalculator("A12", 10, 110, 5));
 
 builder.AddRedisOutputCache("trafficcache");
 
 //Add repositories
 builder.Services.AddTransient<IVehicleStateRepository, RedisVehicleStateRepository>();
 
-//add dapr
-builder.Services.AddDaprClient(builder => builder.Build());
+builder.AddRabbitMQ("fine-messaging");
 
 builder.Services.AddCors();
 
@@ -27,6 +26,8 @@ var app = builder.Build();
 app.UseOutputCache();
 
 app.MapDefaultEndpoints();
+
+
 
 // Configure the HTTP request pipeline.
 
@@ -51,7 +52,7 @@ app.MapPost("entrycam", async (VehicleRegistered msg, IVehicleStateRepository re
     }
 });
 
-app.MapPost("exitcam", async (VehicleRegistered msg, IVehicleStateRepository repo, ISpeedingViolationCalculator calc, DaprClient client) => {
+app.MapPost("exitcam", async (VehicleRegistered msg, IVehicleStateRepository repo, ISpeedingViolationCalculator calc, IConnection connection) => {
     try
     {
         var state = await repo.GetVehicleStateAsync(msg.LicenseNumber);
@@ -81,9 +82,17 @@ app.MapPost("exitcam", async (VehicleRegistered msg, IVehicleStateRepository rep
                 Timestamp = msg.Timestamp
             };
 
-            //    // publish speedingviolation (Dapr publish / subscribe)
+            // publish speedingviolation
             Console.WriteLine($"PUBLISHING {speedingViolation.VehicleId}");
-            await client.PublishEventAsync("pubsub", "speedingviolations", speedingViolation);
+            JsonSerializerOptions jsonSerializerOptions = new()
+            {
+                PropertyNameCaseInsensitive = true,
+            };
+            var queueName = "collectfines";
+            using var channel = connection.CreateModel();
+            channel.QueueDeclare(queue: queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
+            channel.BasicPublish("", queueName, null, JsonSerializer.SerializeToUtf8Bytes(speedingViolation, jsonSerializerOptions));
+            Console.WriteLine($"PUBLISHED {speedingViolation.VehicleId}");
         }
 
         return Results.Ok();
