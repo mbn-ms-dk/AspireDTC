@@ -25,16 +25,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.StackExchange.Redis" Version="8.0.0-preview.5.24201.12" />
+    <PackageReference Include="Aspire.StackExchange.Redis" Version="9.4.2" />
 
-    <PackageReference Include="Aspire.StackExchange.Redis.DistributedCaching" Version="8.0.0-preview.5.24201.12" />
+    <PackageReference Include="Aspire.StackExchange.Redis.DistributedCaching" Version="9.4.2" />
     <PackageReference Include="Aspire.StackExchange.Redis.OutputCaching" Version="8.0.0-preview.4.24156.9" />
 
     <PackageReference Include="Dapr.Actors" Version="1.13.0" />
     <PackageReference Include="Dapr.Actors.AspNetCore" Version="1.13.0" />
     <PackageReference Include="Dapr.AspNetCore" Version="1.13.0" />
     <PackageReference Include="Dapr.Extensions.Configuration" Version="1.13.0" />
-    <PackageReference Include="StackExchange.Redis" Version="2.7.33" />
+    <PackageReference Include="StackExchange.Redis" Version="2.8.41" />
   </ItemGroup>
 
   <ItemGroup>
